@@ -20,9 +20,6 @@ public class tets01_aop {
         Calc calc = context.getBean("calc", Calc.class);  // or CalcImpl.class
         // 取出 类， 定义对象
         int addValue = calc.add(1, 2);
-        System.out.println(addValue);
-
-
     }
 
 }
