@@ -79,6 +79,32 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- 下面是 springMVC 的 依赖-->
+        <!-- spring-webmvc = spring-context + some others -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.18</version>
+        </dependency>
+
+        <!-- 视图渲染 -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
+            <version>3.0.11.RELEASE</version>
+        </dependency>
+        <!-- javax.servlet-api  web-programm -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <!--  provide :    not functional on the servers, because tomcat(sever) already has this jar-->
+            <scope>provided</scope>
+        </dependency>
+
+
+
+
 
 
     </dependencies>
