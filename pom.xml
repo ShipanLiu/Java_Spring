@@ -11,6 +11,7 @@
     <modules>
         <module>m1-spring-AOP</module>
         <module>m2-spring-jdbcTemplate</module>
+        <module>m3-springMVC</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -98,7 +99,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
-            <!--  provide :    not functional on the servers, because tomcat(sever) already has this jar-->
+            <!--  provide :    not functional on the servers, because tomcat(sever side) already has this jar-->
             <scope>provided</scope>
         </dependency>
 

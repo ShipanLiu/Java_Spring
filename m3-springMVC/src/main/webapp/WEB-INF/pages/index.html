@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h2>this is the homepage</h2>
+    <!--我们在 HelloCOntroller.java里面为 为 HelloControllerMethod 映射一个方法-->
+    <a th:href="@{/HelloControllerMethod}">发送请求</a>
+</body>
+</html>
