@@ -12,6 +12,7 @@
         <module>m1-spring-AOP</module>
         <module>m2-spring-jdbcTemplate</module>
         <module>m3-springMVC</module>
+        <module>m4-springMVC_CRUD</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->

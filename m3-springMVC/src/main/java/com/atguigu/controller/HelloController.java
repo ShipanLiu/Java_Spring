@@ -22,4 +22,9 @@ public class HelloController {
         return "success";   // jump to success page
     }
 
+    @RequestMapping("/toEmpLisPage")
+    public String toEmpLisPage() {
+        return "empList";
+    }
+
 }

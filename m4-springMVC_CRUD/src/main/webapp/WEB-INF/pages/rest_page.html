@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rest风格CRUD</title>
+</head>
+<body>
+
+<h2>this page is about Restful 风格的 CRUD 联系</h2></br>
+
+
+<!--POST ，增加员工 -->
+<form th:action="@{/emp}" method="POST">
+    <input type="submit"  value="增"/>
+</form></br>
+
+<!--GET ，查询员工-->
+<a th:href="@{/emp/1001}">查</a></br>
+
+<!--改 emp-->
+<!--  按理说 改 应该用 put， 但是 form only support POST and GET ,   we need a filter!!!  在web.xml里面注册-->
+<form th:action="@{/emp}" method="POST">
+    <!--这是规定的，额外一个input 我们不需要显示出来-->
+    <input type="hidden" name="_method" value="PUT"/>
+    <input type="submit" value="改： put = post + filter">
+</form>
+
+<!--删 emp-->
+<form th:action="@{/emp/1001} "method="POST">
+    <!--这是规定的，额外一个input 我们不需要显示出来-->
+    <input type="hidden" name="_method" value="DELETE"/>
+    <input type="submit" value="删：delete = post + filter">
+</form>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

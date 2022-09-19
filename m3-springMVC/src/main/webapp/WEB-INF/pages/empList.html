@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--xmlns 是 xml namespace 是区分用的-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>empList</title>
+</head>
+<body>
+    <h2>this is empList</h2>
+
+    <a th:href="@{/EmpController/saveEmp(lastname='jiba')}">function1: 添加员工信息</a><br/>
+    <!-- 因为 @RequestMapping(path = "/testAnt/?") // ？ 匹配一个字符-->
+    <a th:href="@{/EmpController/testAnt/s}">function1: 测试ant: ?</a><br/>
+    <!--* 可以代表 任意多个字符-->
+    <a th:href="@{/EmpController/testAnt/jiba}">function1: 测试ant: *</a><br/>
+    <!-- **  可以代表一层-->
+    <a th:href="@{/EmpController/testAnt/jiab/jiba}">function1: 测试ant: **</a><br/>
+
+    <br/>
+    <a th:href="@{/EmpController/testGetParameter/1001}"> 测试获取URL中的 parameter</a><br/>
+</body>
+</html>
