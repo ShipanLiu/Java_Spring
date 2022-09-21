@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>deal with the request data</title>
+</head>
+<body>
+<h1>test SpringMVC deals with  the request data(parameters+header+cookies)</h1></br></br>
+<h3>01deal with request parameters</h3>
+<!--传一个参数-->
+<a th:href="@{/requestParam1(stuName='ZhangSan', sAge =24)}">test request parameters</a>
+
+
+</body>
+</html>
