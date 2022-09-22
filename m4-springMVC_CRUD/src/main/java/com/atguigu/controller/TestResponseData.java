@@ -1,0 +1,51 @@
+package com.atguigu.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
+
+@Controller
+public class TestResponseData {
+
+
+    private final static String SUCCESS = "success";
+
+    @GetMapping("/testResponseData")
+    public ModelAndView testResponseData() {
+
+        ModelAndView mv = new ModelAndView();
+        // set the name of the view
+        mv.setViewName("response_success");
+        // now the data(stuName: jiba) will be shared in the pool(request/session/servletSession)
+        mv.addObject("stuName","ModelAndView");
+        return mv;
+    }
+
+    /* use Map to deal with the response data*/
+    @GetMapping("/testMapResponseData")
+    public String testMapResponseData(Map<String,Object> map) {
+        map.put("stuName", "Map");
+        return "response_success";
+    }
+
+    /* use model to deal with the response data*/
+    @GetMapping("/testModelResponseData")
+    public String testModelResponseData(Model model) {
+        model.addAttribute("stuName", "Model");
+        return "response_success";
+    }
+
+    /* use model to deal with the response data*/
+    @GetMapping("/testModelMapResponseData")
+    public String testModelMapResponseData(ModelMap modelmap) {
+        modelmap.addAttribute("stuName", "ModelMap");
+        return "response_success";
+    }
+
+
+
+}

@@ -24,4 +24,9 @@ public class ToIndexController {
     public String toRestRequestDataPage() {
         return "toRestRequestDataPage";
     }
+
+    @RequestMapping("/toResponseDataPage")
+    public String toResponseDataPage() {
+        return "toResponseDataPage";
+    }
 }

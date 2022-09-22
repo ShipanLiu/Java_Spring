@@ -6,10 +6,28 @@
 </head>
 <body>
 <h1>test SpringMVC deals with  the request data(parameters+header+cookies)</h1></br></br>
-<h3>01deal with request parameters</h3>
+<h3>02-deal with request parameters</h3>
 <!--传一个参数-->
 <a th:href="@{/requestParam1(stuName='ZhangSan', sAge =24)}">test request parameters</a>
+</br>
 
 
+<h3>02-deal with the class Employee ---> request parameters</h3>
+<!--now we should deal with the employee data-->
+<form th:action="@{/saveEmp}" method="POST">
+    id:<input type="text" name="id"></br>
+    lastName:<input type="text" name="lastName"></br>
+    email:<input type="text" name="email"></br>
+    salary:<input type="text" name="salary"></br>
+    <input type="submit" name="submit">
+</form>
+
+<h3>03- deal with the request headers</h3></br>
+<a th:href="@{/getHeader}">test for getting the header</a>
+
+<h3>03- deal with the request cookies</h3></br>
+<!--first you need to set a cookie information-->
+<a th:href="@{/setCookie}">set Cookie information</a>
+<a th:href="@{/getCookie}">get Cookie information</a>
 </body>
 </html>
