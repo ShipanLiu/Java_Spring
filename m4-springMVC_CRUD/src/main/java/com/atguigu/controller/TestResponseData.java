@@ -4,11 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
+@SessionAttributes(value = {"stuName"}) // 把 resuest域（是default 域）中的数据 同步到 session 域中。
 public class TestResponseData {
 
 
@@ -43,6 +47,14 @@ public class TestResponseData {
     @GetMapping("/testModelMapResponseData")
     public String testModelMapResponseData(ModelMap modelmap) {
         modelmap.addAttribute("stuName", "ModelMap");
+        return "response_success";
+    }
+
+    /*测试响应数据， 【其他域 对象】*/
+    @GetMapping("/testScopeResponseData")
+    public String testScopeResponseData(HttpSession session) {
+        session.setAttribute("stuAge", 24);
+
         return "response_success";
     }
 
