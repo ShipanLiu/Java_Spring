@@ -27,6 +27,29 @@
     
     
     <!-- 添加过滤器-->
+
+    <!--这个 filter 是为了解决 request 数据乱码的问题-->
+    <!--这个encoding的过滤器 必须是 在  其他 Filter 的前面-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <!--  即 所有的请求都过滤-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>

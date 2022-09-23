@@ -25,6 +25,7 @@ public class TestResponseData {
         // set the name of the view
         mv.setViewName("response_success");
         // now the data(stuName: jiba) will be shared in the pool(request/session/servletSession)
+        //  这是我response回去的内容（不会出现乱码的 情况）
         mv.addObject("stuName","ModelAndView");
         return mv;
     }
@@ -58,6 +59,13 @@ public class TestResponseData {
         return "response_success";
     }
 
+
+    /* 测试 redirect !!!!*/
+    @GetMapping("/testRedirect")
+    public String testRedirect() {
+        System.out.println("test redirect");
+        return "redirect:/redirect_success.html"; //  加上 / 就是绝对路径了
+    }
 
 
 }
