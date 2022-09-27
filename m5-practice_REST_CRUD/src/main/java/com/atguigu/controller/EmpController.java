@@ -1,0 +1,55 @@
+package com.atguigu.controller;
+
+import com.atguigu.dao.DepartmentDao;
+import com.atguigu.dao.EmployeeDao;
+import com.atguigu.pojo.Department;
+import com.atguigu.pojo.Employee;
+import jdk.nashorn.internal.objects.annotations.Property;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Collection;
+import java.util.Map;
+
+// controller 是和 前端交互用的。  连接  前端  的  Dao  ， 处理连接的业务。   在 更加复杂的业务中， 放在service 里面
+@Controller(value = "empController")
+public class EmpController {
+
+    // Controller 里面需要 Dao， 所以吧 EmployeeDao 来引进
+    @Autowired
+    @Property(name = "empDao")
+    private EmployeeDao empDao;
+
+    @Autowired
+    @Property(name = "depDao")
+    private DepartmentDao depDao;
+
+    //@RequestMapping(value = "/emps", method = RequestMethod.GET)  // this is another way
+    @GetMapping("/emps") // this uses get method , so it is "getMapping"
+    public String getAllEmps(Map<String, Object> map) {
+        // get all the emps
+        Collection<Employee> emps = empDao.getAll();
+        // deliver these emps info out
+        map.put("emps", emps);
+        return "emp_list";  //  return a emp list HTML  page
+
+    }
+
+    /*
+    * 跳转到 添加 Emp 的页面，在之前肯定要把所有的 Dep 查出来 （因为 在 员工添加页面里面要用）
+    * 这就 肯定 会用到 DepDao 了
+    * */
+
+    @GetMapping("/toSaveEmpPage")
+    public String toSaveEmpPage(Map<String, Object> map) {
+        Collection<Department> deps = depDao.getDeps();
+        // we put all queried data into the map, this map is like a shared memory.
+        return "add_"
+    }
+
+
+
+}

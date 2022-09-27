@@ -13,6 +13,7 @@
         <module>m2-spring-jdbcTemplate</module>
         <module>m3-springMVC</module>
         <module>m4-springMVC_CRUD</module>
+        <module>m5-practice_REST_CRUD</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->

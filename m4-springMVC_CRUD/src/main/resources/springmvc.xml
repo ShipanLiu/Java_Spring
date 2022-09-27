@@ -43,7 +43,6 @@
 
 
 
-
     <!--需要加上 annotation-driven  因为没有这个的话， view-controller会导致其他的跳转路径失效-->
     <mvc:annotation-driven></mvc:annotation-driven>
 </beans>

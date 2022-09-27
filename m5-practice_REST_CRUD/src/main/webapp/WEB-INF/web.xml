@@ -5,64 +5,59 @@
          version="4.0">
 
 
-    <!--注册 DispatcherServlet   前端控制器   和下面的 servlet-mapping 是一起的 -->
-    <servlet>
-        <servlet-name>DispatcherServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-
-        <!-- 设置 springmvc.xml 配置文件路径-->
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springmvc.xml</param-value>
-        </init-param>
-        <!--设置 DispatcherServlet的优先级， 即 启动服务器的时候，就创建当前Servlet对象-->
-        <load-on-startup>1</load-on-startup>
-
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    
-    
-    <!-- 添加过滤器-->
-
-    <!--这个 filter 是为了解决 request 数据乱码的问题-->
-    <!--这个encoding的过滤器 必须是 在  其他 Filter 的前面-->
+    <!-- 这里面有两个 filter-->
+    <!-- register  CharacterEncodingFilter-->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+
+        <!-- here inside we put the required parameters-->
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
+
         <init-param>
             <param-name>forceRequestEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
+
     </filter>
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
-        <!--  即 所有的请求都过滤-->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 
 
     <!--浏览器form表单只支持GET与POST请求，而DELETE、PUT等method并不支持，
     spring3.0添加了一个过滤器，可以将这些请求转换为标准的http方法，
     使得支持GET、POST、PUT与DELETE请求，该过滤器为HiddenHttpMethodFilter
     -->
-
+    <!-- register  HiddenHttpMethodFilter-->
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>HiddenHttpMethodFilter</filter-name>
-        <!--所有的请求都需要过滤-->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+    <!-- register DispatcherServlet-->
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+        <!--  注意 ：load-on-startup 写在  init-param 后面 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
 </web-app>

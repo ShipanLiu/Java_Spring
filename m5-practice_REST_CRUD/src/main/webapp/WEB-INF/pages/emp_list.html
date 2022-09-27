@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>emp_list</title>
+</head>
+<body>
+<div align="center">
+    <h2>emp_list</h2>
+    <table border="1" width="600px" height="300px">
+        <!-- 表格 头-->
+        <tr>
+            <th>id</th>
+            <th>lastName</th>
+            <th>email</th>
+            <th>gender</th>
+            <th>DeptName</th>
+            <th>Operation</th>
+        </tr>
+        <!-- 表格 数据行-->
+        <tr align="center" th:each="emp: ${emps}">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.lastName}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.gender==1?'male':'female'}"></td>
+            <td th:text="${emp.department.departmentName}"></td>
+            <td>
+                <a th:href="@{/}">modify</a>
+                <a th:href="@{/}">delete</a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/toSaveEmpPage}"> add Emp</a>
+
+</div>
+
+</body>
+</html>
