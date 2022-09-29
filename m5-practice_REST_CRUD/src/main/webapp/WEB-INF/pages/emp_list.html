@@ -25,8 +25,13 @@
             <td th:text="${emp.gender==1?'male':'female'}"></td>
             <td th:text="${emp.department.departmentName}"></td>
             <td>
-                <a th:href="@{/}">modify</a>
-                <a th:href="@{/}">delete</a>
+                <a th:href="@{/toUpdateEmp/}+${emp.id}">modify</a>
+                <!--REST 方式 进行delete   method 1: -->
+                <form th:action="@{/emps/}+${emp.id}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="delete">
+                </form>
+                <!-- delete function realise  method 2:  使用Vue-->
             </td>
         </tr>
     </table>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>emp_update</title>
+</head>
+<body>
+<div align="center">
+    <h2>modify emp information</h2>
+    <form th:action="@{/emps}" method="post">
+        <!--modify should use "put" reuqest method-->
+        <input type="hidden" name="_method" value="PUT">
+
+        <!-- id 还是要传的， 具体看  employeeDao,  但是我不显示， 防止你修改id-->
+        id: <input type="hidden" name="id" th:value="${emp.id}"></br>
+        lastName: <input type="text" name="lastName" th:value="${emp.lastName}"></br>
+        email: <input type="text" name="email" th:value="${emp.email}"></br>
+        gender: <input type="radio" name="gender" value="1" th:checked="${emp.gender==1}">male
+        <input type="radio" name="gender" value="0" th:checked="${emp.gender==0}">female</br>
+        department: <select name="department.id">
+        <option th:each="dept: ${depts}" th:text="${dept.departmentName}" th:value="${dept.id}" th:selected="${dept.id==emp.department.id}"></option>
+    </select></br>
+        <input type="submit" value="Modify Done">
+    </form>
+</div>
+</body>
+</html>
