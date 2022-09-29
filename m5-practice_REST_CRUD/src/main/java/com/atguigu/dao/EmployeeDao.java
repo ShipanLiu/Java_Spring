@@ -37,7 +37,10 @@ public class EmployeeDao {
         if(emp.getId() == null) {
             emp.setId(initId++);
         }
-        // there is only a department Nr in the emp but not a name, now let us get the Object department (id, name), and insert it into the
+        // if you add one new emp via the form in html file , you will find that you re only uploading the id of the
+        // department, so you need to reset the Department attribute by providing the complete Department Object
+        // result when adding a new emp: emp:Employee{id=null, lastName='Liu', email='2446953927@qq.com', gender=1, department=Department{id=101, departmentName='null'}}
+        // there is only a department id(without departmentName) in the emp but not a name, now let us get the Object department (id, name), and insert it into the
         // new created emp.
         emp.setDepartment(departmentDao.getDep(emp.getDepartment().getId()));  // 我传进来的emp 只带有 dep 的id， 没有 dep的名字
         employees.put(emp.getId(), emp);

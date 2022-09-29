@@ -8,6 +8,7 @@ import jdk.nashorn.internal.objects.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,11 +46,29 @@ public class EmpController {
 
     @GetMapping("/toSaveEmpPage")
     public String toSaveEmpPage(Map<String, Object> map) {
-        Collection<Department> deps = depDao.getDeps();
+        Collection<Department> depts = depDao.getDeps();
         // we put all queried data into the map, this map is like a shared memory.
-        return "add_"
+        map.put("depts", depts);
+        return "emp_add_save";
     }
 
+    /*
+    *
+    * here add emp
+    *
+    * Pojo atomatic parameting
+    *
+    * */
+    @PostMapping("/emps")
+    public String saveEmp(Employee emp) {
+        System.out.println("emp:" + emp);
+
+        empDao.save(emp);
+
+        /* after saving, getAll again and redirect to getAllEmps() and will show the the emp_list_html again  page*/
+        /*when you want redirect to a html page, you have to write "redirect:/new_page.html", please do not forget the .html*/
+        return "redirect:/emps"; // redirect to getAllEmps()
+    }
 
 
 }

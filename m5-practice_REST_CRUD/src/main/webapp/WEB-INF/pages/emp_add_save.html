@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Emp_Add</title>
+</head>
+<body>
+<div align="center">
+    <h2>add emp information</h2>
+    <!--因为使用rest 风格 所以请求的 路径 一致-->
+    <!--一定要使用 th:action-->
+    <form th:action="@{/emps}" method="post">
+        <!--最好保证  name 和  属性名 一致， 保证 自动入参-->
+          lastName: <input type="text" name="lastName"></br>
+             email: <input type="text" name="email"></br>
+            gender: <input type="radio" name="gender" value="1" checked>male
+                    <input type="radio" name="gender" value="1">female</br>
+        <!-- 自动入参 ：name="department.id" 是 department.id 类型，是 Emp 里面 private Department department; 定义的 -->
+        <!-- 你提交的 id ， 所以 department.id 写上  看 day 10/18-->
+        department: <select name="department.id">
+        <!-- th:text= 代表动态绑定过来的， 应该显示的值。  th:value= 是真实的值， 需要 处理的 -->
+        <!-- text 是显示的值，  value是真实的值-->
+                        <option th:each="dept: ${depts}" th:text="${dept.departmentName}" th:value="${dept.id}"></option>
+                    </select></br>
+        <input type="submit" value="add emp">
+    </form>
+</div>
+
+</body>
+</html>
+</div>
