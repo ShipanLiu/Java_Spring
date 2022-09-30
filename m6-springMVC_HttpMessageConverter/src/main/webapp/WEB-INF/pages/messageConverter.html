@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>messageConverter Page</title>
+</head>
+<body>
+<!--use @RequestBody-->
+<h3>test request body(get does not have request body, so we use the request body "post")</h3>
+<form th:action="@{/testRequestBody}" method="post">
+    lastName: <input type="text" name="lastName"></br>
+    email: <input type="text" name="email"></br>
+    <input type="submit" value="click to submit"></br>
+</form>
+
+</br>
+
+
+<h3><!--use @HttpEntity--></h3>
+<form th:action="@{/testHttpEntity}" method="post">
+    lastName: <input type="text" name="lastName"></br>
+    email: <input type="text" name="email"></br>
+    <input type="submit" value="click to submit"></br>
+</form>
+
+
+<h3><!--use @ResponseBody--></h3>>
+<a th:href="@{/testResponseBody}">test @ResponseBody</a>
+
+
+</body>
+</html>

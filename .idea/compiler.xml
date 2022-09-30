@@ -9,6 +9,7 @@
         <module name="m3-springMVC" />
         <module name="m5-practice_REST_CRUD" />
         <module name="m4-springMVC_CRUD" />
+        <module name="m6-springMVC_HttpMessageConverter" />
         <module name="m1-spring-AOP" />
         <module name="m2-spring-jdbcTemplate" />
       </profile>
