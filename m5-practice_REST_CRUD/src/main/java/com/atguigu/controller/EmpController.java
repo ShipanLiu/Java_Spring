@@ -91,9 +91,9 @@ public class EmpController {
     * */
 
     @GetMapping("/toUpdateEmp/{empId}")
-    public String toUpdateEmp(@PathVariable("empId") Integer id, Map<String,Object> map) {
+    public String toUpdateEmp(@PathVariable("empId") Integer id, Map<String,Object> map) { // 我不知到前端会 传给我多少参数，直接用一个 map
         Employee emp = empDao.get(id);
-        map.put("emp", emp);
+        map.put("emp", emp);  // 把东西 放入到 map 里面， 相当于 放入到   request 域   里面
         Collection<Department> depts = depDao.getDeps();
         map.put("depts", depts);
         return "emp_update";
