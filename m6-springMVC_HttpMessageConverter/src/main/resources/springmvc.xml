@@ -28,9 +28,40 @@
         </property>
     </bean>
 
-    <!--view-controller：就是为了 跳转路径而生的， （可以省下一个controller） -->
+    <!--装配 commons-fileupload  -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 100 kByte-->
+        <property name="maxUploadSizePerFile" value="102400"></property>
+        <!--10000 kByte-->
+        <property name="maxUploadSize" value="10240000"></property>
+    </bean>
+
+    <mvc:interceptors>
+
+        <!--全局装配-->
+        
+        <!--  装配 你自己定义的 interpreter-->
+<!--        <bean class="com.atguigu.interceptor.MyInterceptor"></bean>-->
+        <!--另一种 装配的方式， 在 类 MyInterceptor 上面加上 @Component-->
+<!--        <ref bean="myInterceptor"></ref>-->
+        
+        <!--局部装配, forexample: I only want to intercept for the url "/testJson"-->
+        <mvc:interceptor>
+            <mvc:mapping path="/testJson"/>
+            <ref bean="myInterceptor"></ref>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/testResponseBody"/>
+            <ref bean="myInterceptor2"></ref>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--view-controller：就是为了 单纯跳转到另一个html页面产生的 而生的， （可以省下一个controller method） -->
     <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
     <mvc:view-controller path="/messageConverter" view-name="messageConverter"></mvc:view-controller>
+    <mvc:view-controller path="/toFileUploadPage" view-name="fileUploadPage"></mvc:view-controller>
+    <mvc:view-controller path="/toFileDownloadPage" view-name="fileDownloadPage"></mvc:view-controller>
 
     <!--default servlet handler:  解决静态资源加载的问题-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>

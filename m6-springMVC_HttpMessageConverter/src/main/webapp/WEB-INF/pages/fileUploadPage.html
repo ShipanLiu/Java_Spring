@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>uploadPage</title>
+</head>
+<body>
+<div align="center">
+    <h2>upload file</h2>
+    <form th:action="@{/fileUploadController}" method="post" enctype="multipart/form-data">
+        name: <input type="text" name="username"></br>
+        <!--name  可以在 controller 方法里面 以同样的名字 入参-->
+        name: <input type="file" name="uploadFile"></br>
+        <input type="submit" value="submit the file">
+    </form>
+</div>
+
+</body>
+</html>
