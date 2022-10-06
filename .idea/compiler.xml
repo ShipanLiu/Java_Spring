@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="m3-springMVC" />
         <module name="m5-practice_REST_CRUD" />
+        <module name="m7-ssm" />
+        <module name="m3-springMVC" />
         <module name="m4-springMVC_CRUD" />
         <module name="m6-springMVC_HttpMessageConverter" />
         <module name="m1-spring-AOP" />

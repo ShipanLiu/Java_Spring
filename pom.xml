@@ -15,6 +15,7 @@
         <module>m4-springMVC_CRUD</module>
         <module>m5-practice_REST_CRUD</module>
         <module>m6-springMVC_HttpMessageConverter</module>
+        <module>m7-ssm</module>
     </modules>
 <!--    <dependencies>-->
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/junit/junit &ndash;&gt;-->

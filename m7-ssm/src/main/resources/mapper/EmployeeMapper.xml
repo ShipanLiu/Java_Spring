@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--这里写 interface 的 类名的 references-->
+<mapper namespace="com.atguigu.mapper.EmployeeMapper">
+
+    <!--  在 spring.xml 里面设置了别名(typeAliasesPackage)， 所以 Employee -> employee 之前是写 com.atguigu.pojo.Employee-->
+    <select id="selectAll" resultType="com.atguigu.pojo.Employee">
+        select *
+        from
+             Emp
+
+    </select>
+</mapper>

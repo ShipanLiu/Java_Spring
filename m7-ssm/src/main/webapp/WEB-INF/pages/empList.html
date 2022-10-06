@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list of emps</title>
+</head>
+<body>
+<h2>here is empList</h2>
+    <table border="1" width="600px" height="300px">
+        <tr>
+            <th>emp_id</th>
+            <th>emp_name</th>
+            <th>emp_email</th>
+            <th>emp_salary</th>
+            <th>dept_id</th>
+        </tr>
+        <!-- emps  是在 map 里面了， 在共享的 request 域里面-->
+        <tr th:each="emp: ${emps}">
+            <td th:text="${emp.empId}"></td>
+            <td th:text="${emp.empName}"></td>
+            <td th:text="${emp.empEmail}"></td>
+            <td th:text="${emp.empSalary}"></td>
+            <td th:text="${emp.deptId}"></td>
+        </tr>
+    </table>
+</body>
+</html>
