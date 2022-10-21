@@ -16,6 +16,7 @@
         <module>m5-practice_REST_CRUD</module>
         <module>m6-springMVC_HttpMessageConverter</module>
         <module>m7-ssm</module>
+        <module>m8-redis_jedis</module>
     </modules>
 <!--    <dependencies>-->
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/junit/junit &ndash;&gt;-->
