@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/m10-redis-seckill" />
+    <file type="web" url="file://$PROJECT_DIR$/m9-redis-SMS" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/m9-redis-SMS_code/pom.xml" />
+        <option value="$PROJECT_DIR$/redis_seckill/pom.xml" />
+        <option value="$PROJECT_DIR$/m10-redis-seckill/pom.xml" />
       </list>
     </option>
   </component>

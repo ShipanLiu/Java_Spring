@@ -10,11 +10,16 @@
         <module name="m8-redis_jedis" />
         <module name="m7-ssm" />
         <module name="m3-springMVC" />
+        <module name="m9-redis-SMS" />
         <module name="m4-springMVC_CRUD" />
         <module name="m6-springMVC_HttpMessageConverter" />
         <module name="m1-spring-AOP" />
+        <module name="m10-redis-seckill" />
         <module name="m2-spring-jdbcTemplate" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="m9-redis-SMS" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
