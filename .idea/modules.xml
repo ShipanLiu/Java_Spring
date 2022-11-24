@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/m9-redis-SMS_code/m9-redis-SMS.iml" filepath="$PROJECT_DIR$/m9-redis-SMS_code/m9-redis-SMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/m0_java_basic_recap/m0_java_basic_recap.iml" filepath="$PROJECT_DIR$/m0_java_basic_recap/m0_java_basic_recap.iml" />
     </modules>
   </component>
 </project>

@@ -18,8 +18,5 @@
         <module name="m2-spring-jdbcTemplate" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="m9-redis-SMS" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
