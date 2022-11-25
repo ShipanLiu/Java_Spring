@@ -6,3 +6,12 @@ public class test {
         System.out.println(a+'b');
     }
 }
+
+
+/*
+*
+*
+* Here is just for testing!! here has nothing to do with the Hausaufgaben
+*
+*
+* */
