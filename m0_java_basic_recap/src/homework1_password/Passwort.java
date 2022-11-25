@@ -3,6 +3,7 @@ package homework1_password;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Passwort extends PasswortGeheim {
+
     public Passwort() {
     }
 
@@ -39,6 +40,7 @@ public class Passwort extends PasswortGeheim {
      * Das Schlüsselwort static hat keine Auswirkungen auf Ihre Umsetzung der Aufgabe und braucht nicht weiter beachtet
      * zu werden.
      */
+
     static boolean istSicheresPasswort(String passwort) {
         /////////////////////////////
         // Ab hier Ihr Code ....
@@ -48,7 +50,7 @@ public class Passwort extends PasswortGeheim {
         boolean containsSpecialCharacter = false;
         int digitalSize = 0;
 
-
+        // my own matrikelnummer in the HSD
         String matrikelnummer = "hsd101";
 
         // check if the password contains Matrikelnummer
@@ -70,14 +72,13 @@ public class Passwort extends PasswortGeheim {
         int i = 0;
         while(i < passwordLength) {
             char ch = passwort.charAt(i);
-            if(Character.isDigit(ch)) {
+            if(ziffer.indexOf(ch) != -1) {
                 digitalSize++;
-                System.out.println("digitalSize: " + digitalSize);
             }
-            if(Character.isUpperCase(ch)) {
+            if(grossbuchstabe.indexOf(ch) != -1) {
                 containsOneUppercase = true;
             }
-            if(Character.isLowerCase(ch)) {
+            if(kleinbuchstabe.indexOf(ch) != -1) {
                 containsOneLowercase = true;
             }
             if(sonderzeichen.indexOf(ch) != -1) {

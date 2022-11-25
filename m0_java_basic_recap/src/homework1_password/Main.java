@@ -47,20 +47,20 @@ public class Main {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        System.out.println("\n\nTeilaufgabe 2 testen:");
-        // Hier ein neues Passwort erzeugen. Es wird automatisch ein zufälliges Passwort erzeugt:
-        Passwort pw = new Passwort();
-
-        /* wer möchte, kann hier ein eigenes Passwort setzen, um die Programmierung zu testen. Dazu einfach die zwei
-           Zeilen unterhalb einkommentieren. Wichtig: Ihre Lösung muss auch mit den zufällig generierten Passwörtern
-           funktionieren. */
-        //String meinTestPasswort = "Geheim!";
-        //pw.setMeinPasswort(meinTestPasswort);
-
-        // Hier die "passwortErraten" Programmierung testen
-        String erraten = pw.passwortErraten();
-
-        System.out.println("Testpasswort richtig? " + pw.passwortPruefen(erraten));
+//        System.out.println("\n\nTeilaufgabe 2 testen:");
+//        // Hier ein neues Passwort erzeugen. Es wird automatisch ein zufälliges Passwort erzeugt:
+//        Passwort pw = new Passwort();
+//
+//        /* wer möchte, kann hier ein eigenes Passwort setzen, um die Programmierung zu testen. Dazu einfach die zwei
+//           Zeilen unterhalb einkommentieren. Wichtig: Ihre Lösung muss auch mit den zufällig generierten Passwörtern
+//           funktionieren. */
+//        //String meinTestPasswort = "Geheim!";
+//        //pw.setMeinPasswort(meinTestPasswort);
+//
+//        // Hier die "passwortErraten" Programmierung testen
+//        String erraten = pw.passwortErraten();
+//
+//        System.out.println("Testpasswort richtig? " + pw.passwortPruefen(erraten));
 
     }
 }
