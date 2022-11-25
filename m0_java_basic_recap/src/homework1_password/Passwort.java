@@ -62,7 +62,7 @@ public class Passwort extends PasswortGeheim {
 
         // check if the password is too long
         if(passwort.length() < 8) {
-            System.out.println("password too long");
+            System.out.println("password too short");
             ergebnis = false;
             return ergebnis;
         }
@@ -115,14 +115,37 @@ public class Passwort extends PasswortGeheim {
         // Das folgende Codebeispiel dient nur der Unterstützung und zum Verständnis und kann durch Sie verändert oder
         // entfernt werden. Es ist auch nicht unbedingt ein Ansatz für die Lösung.
         String fertigErratenesPasswort = "** das Passwort wurde noch nicht erraten **";
-        String rateversuch = "IstEsDasHier" + erlaubteZeichen.charAt(82); // Ein mögliches Passwort (das Zeichen mit dem Index 82 in erlaubteZeichen ist das Fragezeichen.
-                                                                            //"IstEsDasHier?"
+        String rateversuch = "0123456789"; // defauft password is 8 long
         boolean[] woRichtig = this.ueberinstimmendeZeichen(rateversuch); // im Array "woRichtig" stehen jetzt Booleans
         int anzahlDerZeichenImPasswort = woRichtig.length; // password length(a random number, will change)
         int anzahlDerRichtigenZeichen = 0; // Zählvariable
+        int ratversuchLength = rateversuch.length();
         int erlaubteZeichenLength = erlaubteZeichen.length();
 
         System.out.println("woRichtig length: " + anzahlDerZeichenImPasswort);
+
+        // now judge the real length of the password
+        if(anzahlDerZeichenImPasswort > ratversuchLength) {
+            System.out.println("the length of ratversuch too short");
+            // this means the real password is longer than ratversuchLength(here 10)
+            // we have to extend our rateversuch
+            int i = 0;
+            while(i < anzahlDerZeichenImPasswort - ratversuchLength) {
+                rateversuch += '1';
+                i++;
+            }
+            System.out.println("modified ratversuch: " + rateversuch);
+        }
+        if(anzahlDerZeichenImPasswort < ratversuchLength) {
+            System.out.println("the length of rateversuch too long");
+            // this means the real password is shorter than ratversuchLength(here 10)
+            // we have to shorten our rateversuch
+            rateversuch = rateversuch.substring(0, anzahlDerRichtigenZeichen);
+            System.out.println("modified ratversuch: " + rateversuch);
+        }
+        if(anzahlDerZeichenImPasswort == ratversuchLength) {
+            System.out.println("the length of rateversuch is perfekt");
+        }
 
         for (int i=0; i<anzahlDerZeichenImPasswort; i++){
             if (woRichtig[i]){
@@ -143,9 +166,6 @@ public class Passwort extends PasswortGeheim {
                     }
                 }
                 System.out.println("anzahlDerRichtigenZeichen: " + anzahlDerRichtigenZeichen);
-                // das i-te Element stimmt nicht, an dieser Position muss also ein anderes element aus "erlaubteZeichen"
-                // ausprobiert werden.
-
             }
         }
 
