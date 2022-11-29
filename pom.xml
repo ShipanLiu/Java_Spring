@@ -4,19 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--想要 改下面的 四行， 要在 创建 project 的时候， 注意。-->
     <groupId>org.example</groupId>
     <artifactId>Spring_Workspace</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>m1-spring-AOP</module>
-        <module>m2-spring-jdbcTemplate</module>
-        <module>m3-springMVC</module>
-        <module>m4-springMVC_CRUD</module>
-        <module>m5-practice_REST_CRUD</module>
-        <module>m6-springMVC_HttpMessageConverter</module>
-        <module>m7-ssm</module>
-        <module>m8-redis_jedis</module>
+<!--        <module>m1-spring-AOP</module>-->
+<!--        <module>m2-spring-jdbcTemplate</module>-->
+<!--        <module>m3-springMVC</module>-->
+<!--        <module>m4-springMVC_CRUD</module>-->
+<!--        <module>m5-practice_REST_CRUD</module>-->
+<!--        <module>m6-springMVC_HttpMessageConverter</module>-->
+<!--        <module>m7-ssm</module>-->
+<!--        <module>m8-redis_jedis</module>-->
+        <module>GoodHouse-common-util</module>
     </modules>
 <!--    <dependencies>-->
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/junit/junit &ndash;&gt;-->
@@ -114,6 +116,10 @@
 
 
 <!--    </dependencies>-->
+
+
+    <!--接下来是 尚好房的 依赖， 上面的都是 m01-m10的依赖-->
+
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
