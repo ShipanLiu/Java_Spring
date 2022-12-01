@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="GoodHouse-model" />
+        <module name="GoodHouse-web-admin" />
         <module name="m8-redis_jedis" />
         <module name="m10-redis-seckill" />
         <module name="GoodHouse-common-util" />
