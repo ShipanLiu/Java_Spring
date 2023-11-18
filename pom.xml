@@ -122,7 +122,7 @@
 <!--    </dependencies>-->
 
 
-    <!--接下来是 尚好房的 依赖， 上面的都是 m01-m10的依赖-->
+    <!--接下来是 尚好房的 依赖， 上面的都是 m01-m10文件夹的依赖-->
     <properties>
         <!--这里面是 自定义的 标签 来指定 java 的版本的。-->
         <maven.compiler.source>8</maven.compiler.source>

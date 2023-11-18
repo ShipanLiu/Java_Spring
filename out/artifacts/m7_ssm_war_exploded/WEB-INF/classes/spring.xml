@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+<!--    开启组件扫描： 排除 controller 层-->
+    <context:component-scan base-package="com.atguigu">
+<!--        排除扫描 Controller 注解, 基于 annocation（注解）-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 注意， 我们让 spring + Druid 来管理 mysql 的接入， 不再用mybatis 来管理了-->
+<!--    加载外部属性文件-->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+<!--    配置数据源 【DruidDataSource】-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${db.driverClassName}"></property>
+        <property name="url" value="${db.url}"></property>
+        <property name="username" value="${db.username}"></property>
+        <property name="password" value="${db.password}"></property>
+    </bean>
+<!--    配置事务管理器【DataSourceTransactionManager】-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+<!--    开启 声明式 事务管理注解支持 http://www.springframework.org/schema/tx -->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+<!--    *装配 SqlSessionFactoryBean *  管理 SqlSessionFactory, id 必须是 ：sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--mybatis-config.xml  核心配置文件路径-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <!--typeAliases：别名处理器，可以为java类型（resultType）
+        起别名。类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。-->
+        <property name="typeAliasesPackage" value="com.atguigu.pojo"></property>
+        <!--设置 映射文件路径-->
+        <property name="mapperLocations" value="classpath:/mapper/*.xml"></property>
+
+    </bean>
+
+<!--    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">-->
+<!--        <property name="dataSource" ref="dataSource" />-->
+<!--    </bean>-->
+
+<!--    *装配 MapperScannerConfigurer ， 管理Mapper代理对象*-->
+    <!-- 这样的话， com.atguigu.mapper 下面的接口 会生成代理对象 -->
+        <mybatis-spring:scan base-package="com.atguigu.mapper"></mybatis-spring:scan>
+</beans>

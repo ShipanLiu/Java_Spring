@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- springmvc 只用于 扫描 controller 层, 使用nclude-filter  必须设置 use-default-filters="false"，  关闭当前包 和  子包的扫描-->
+    <context:component-scan base-package="com.atguigu" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--装配 view-resolver（Thymeleaf）   use Bean-->
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <!-- first give the value of encoding-->
+        <property name="characterEncoding" value="UTF-8"></property>
+
+        <!--second load the Engine-->
+        <property name="templateEngine">
+            <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+                <property name="templateResolver">
+                    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+                        <property name="characterEncoding" value="UTF-8"></property>
+                        <!--  为了 文件的名字-->
+                        <property name="prefix" value="/WEB-INF/pages/"></property>
+                        <!--为了文件的 后缀-->
+                        <property name="suffix" value=".html"></property>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--view-controller：就是为了 单纯跳转到另一个html页面产生的 而生的， （可以省下一个controller method） -->
+    <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+
+    <!--default servlet handler:  解决静态资源加载的问题-->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+    <!--解决静态资源 加载的后续问题-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+</beans>

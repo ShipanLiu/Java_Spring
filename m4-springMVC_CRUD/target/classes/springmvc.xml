@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:mvv="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--开启组件扫描-->
+    <context:component-scan base-package="com.atguigu"></context:component-scan>
+
+    <!-- 配置视图解析器 ：  就是解析视图用的。 HTML CSS-->
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <!--  配置encoding-->
+        <property name="characterEncoding" value="UTF-8"></property>
+        <!--配置模板引擎属性-->
+        <property name="templateEngine">
+            <!-- 配置一个内部的 bean， 因为没有外部bean， 不能用 ref 引用-->
+            <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+                <property name="templateResolver">
+                    <!--配置内部bean-->
+                    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+                        <!--配置prefix (就是在)  放到 WEB-INF 下面的文件相对比较安全, pages后面的 / 不要省略-->
+                        <!-- WEB-INF 前面的 / 是绝对路径-->
+                        <property name="prefix" value="/WEB-INF/pages/"></property>
+                        <!--配置suffix-->
+                        <property name="suffix" value=".html"></property>
+                        <!--配置characterEncoding-->
+                        <property name="characterEncoding" value="UTF-8"></property>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- add view-controller : 就是为了 跳转路径而生的-->
+    <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+    <mvc:view-controller path="/toRestPage" view-name="rest_page"></mvc:view-controller>
+    <mvc:view-controller path="/toRestRequestDataPage" view-name="toRestRequestDataPage"></mvc:view-controller>
+    <mvc:view-controller path="/toResponseDataPage" view-name="toResponseDataPage"></mvc:view-controller>
+
+
+    <!--解决静态资源（不让 DispatchServlet 覆盖 DefaultServlet， 让 DefaultServlet生效） 加载的问题（直接在WEB-INF 下面的 资源）-->
+    <mvv:default-servlet-handler></mvv:default-servlet-handler>
+
+
+
+    <!--需要加上 annotation-driven  因为没有这个的话， view-controller会导致其他的跳转路径失效-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+</beans>
